@@ -1,6 +1,5 @@
 package com.example.harajtask
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.harajtask.databinding.ActivityMainBinding
 import com.example.harajtask.essential.base.BaseActivity

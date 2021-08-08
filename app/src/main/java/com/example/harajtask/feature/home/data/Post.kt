@@ -1,4 +1,4 @@
-package com.example.harajtask.data
+package com.example.harajtask.feature.home.data
 
 data class Post(
     val title: String?,
