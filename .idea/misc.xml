@@ -4,6 +4,7 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="../../.gradle/caches/transforms-3/4d725b98ee4f423ff32d04879dbe2d89/transformed/appcompat-1.3.1/res/layout/abc_search_view.xml" value="0.3703125" />
+        <entry key="app/src/main/res/drawable/background_item_recycler.xml" value="0.38645833333333335" />
         <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.38645833333333335" />
         <entry key="app/src/main/res/drawable/ic_location.xml" value="0.38645833333333335" />
         <entry key="app/src/main/res/drawable/ic_search.xml" value="0.38645833333333335" />
@@ -11,6 +12,7 @@
         <entry key="app/src/main/res/drawable/ic_user.xml" value="0.38645833333333335" />
         <entry key="app/src/main/res/drawable/style_card_accented.xml" value="0.38645833333333335" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.3703125" />
+        <entry key="app/src/main/res/layout/fragment_detail.xml" value="0.3703125" />
         <entry key="app/src/main/res/layout/fragment_home.xml" value="0.33" />
         <entry key="app/src/main/res/layout/item_home_listing.xml" value="0.33" />
       </map>

@@ -9,13 +9,17 @@ import com.example.harajtask.R
 import com.example.harajtask.databinding.ItemHomeListingBinding
 import com.example.harajtask.essential.data.Post
 
-class HomeAdapter(private var itemList: List<Post>) :
+class HomeAdapter(
+    private var itemList: List<Post>,
+    private var clickCallback: (Int, Post) -> Unit
+) :
     RecyclerView.Adapter<HomeAdapter.ViewHolder>() {
 
     class ViewHolder(private val binding: ItemHomeListingBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        fun setBinding(post: Post) {
+        fun setBinding(position: Int, post: Post, callback: (Int, Post) -> Unit) {
             binding.post = post
+            binding.root.setOnClickListener { callback.invoke(position, post) }
         }
     }
 
@@ -31,18 +35,16 @@ class HomeAdapter(private var itemList: List<Post>) :
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.setBinding(itemList[position])
+        holder.setBinding(position, itemList[position], clickCallback)
     }
 
     override fun getItemCount() = itemList.size
 
     fun updateList(list: List<Post>) {
-        if (list.isNullOrEmpty().not()) {
-            val diffCallback = DiffCallback(this.itemList, list)
-            val diffResult = DiffUtil.calculateDiff(diffCallback)
-            this.itemList = list
-            diffResult.dispatchUpdatesTo(this)
-        }
+        val diffCallback = DiffCallback(this.itemList, list)
+        val diffResult = DiffUtil.calculateDiff(diffCallback)
+        this.itemList = list
+        diffResult.dispatchUpdatesTo(this)
 
     }
 }

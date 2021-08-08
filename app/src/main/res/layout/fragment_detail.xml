@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="post"
+            type="com.example.harajtask.essential.data.Post" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/detail_toolbar"
+            style="@style/AppTheme.AppBarOverlay"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorPrimary"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:id="@+id/detail_share_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:contentDescription="@string/detail_share_button"
+                android:src="@drawable/ic_share" />
+
+        </androidx.appcompat.widget.Toolbar>
+
+        <ImageView
+            android:id="@+id/item_image_view"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:contentDescription="@string/item_image_view_content_description"
+            android:scaleType="centerCrop"
+            app:layout_constraintBottom_toBottomOf="@id/guideline_03"
+            app:layout_constraintTop_toBottomOf="@id/detail_toolbar"
+            app:setNetworkImage="@{post.thumbURL}"
+            tools:src="@drawable/ic_launcher_background" />
+
+        <ImageView
+            android:id="@+id/item_user_image_view"
+            android:layout_width="14dp"
+            android:layout_height="14dp"
+            android:layout_marginTop="10dp"
+            android:contentDescription="@string/item_user_image_view_content_description"
+            android:src="@drawable/ic_user"
+            app:layout_constraintStart_toStartOf="@id/item_time_text_view"
+            app:layout_constraintTop_toBottomOf="@id/item_time_text_view"
+            app:tint="@color/black" />
+
+        <TextView
+            android:id="@+id/item_user_text_view"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:lines="1"
+            android:text="@{post.username}"
+            app:autoSizeMaxTextSize="14sp"
+            android:textAlignment="viewStart"
+            app:autoSizeMinTextSize="6sp"
+            app:autoSizeTextType="uniform"
+            app:layout_constraintBottom_toBottomOf="@id/item_user_image_view"
+            app:layout_constraintEnd_toEndOf="@id/guideline_055"
+            app:layout_constraintStart_toEndOf="@id/item_user_image_view"
+            app:layout_constraintTop_toTopOf="@id/item_user_image_view"
+
+            tools:text="Abdul Rehman" />
+
+        <ImageView
+            android:id="@+id/item_location_image_view"
+            android:layout_width="22dp"
+            android:layout_height="14dp"
+            android:contentDescription="@string/item_user_image_view_content_description"
+            android:paddingStart="5dp"
+            android:paddingEnd="5dp"
+            android:src="@drawable/ic_location"
+            app:layout_constraintBottom_toBottomOf="@id/item_user_text_view"
+            app:layout_constraintHorizontal_bias="0"
+            app:layout_constraintStart_toStartOf="@id/guideline_055"
+            app:layout_constraintTop_toTopOf="@id/item_user_text_view"
+            app:tint="@color/black" />
+
+        <TextView
+            android:id="@+id/item_location_text_view"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="20dp"
+            android:lines="1"
+            android:textAlignment="viewStart"
+            android:text="@{post.city}"
+            app:autoSizeMaxTextSize="14sp"
+            app:autoSizeMinTextSize="6sp"
+            app:autoSizeTextType="uniform"
+            app:layout_constraintBottom_toBottomOf="@id/item_location_image_view"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0"
+            app:layout_constraintStart_toEndOf="@id/item_location_image_view"
+            app:layout_constraintTop_toTopOf="@id/item_location_image_view"
+            tools:text="Riyadh" />
+
+        <TextView
+            android:id="@+id/item_time_text_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toEndOf="@id/item_title_text_view"
+            app:layout_constraintHorizontal_bias="0"
+            app:layout_constraintStart_toStartOf="@id/item_title_text_view"
+            app:layout_constraintTop_toBottomOf="@id/item_title_text_view"
+            app:setTime="@{post.date}"
+            tools:text="2021/05/25 11:35PM" />
+
+        <TextView
+            android:id="@+id/item_title_text_view"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            android:ellipsize="end"
+            android:maxLines="2"
+            android:text="@{post.title}"
+            android:textColor="@color/titleGreen"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:autoSizeMaxTextSize="18sp"
+            app:autoSizeMinTextSize="6sp"
+            app:autoSizeTextType="uniform"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/item_image_view"
+            tools:text="Toyota Camry GLE 2019" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline_03"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.45" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline_055"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.60" />
+
+        <TextView
+            android:id="@+id/detail_description_text_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            android:autoLink="all"
+            android:text="@{post.body}"
+            app:layout_constraintTop_toBottomOf="@id/item_user_text_view" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

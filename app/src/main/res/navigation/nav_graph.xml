@@ -9,5 +9,18 @@
         android:id="@+id/homeFragment"
         android:name="com.example.harajtask.feature.home.view.HomeFragment"
         android:label="HomeFragment"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home">
+        <action
+            android:id="@+id/action_homeFragment_to_detailFragment"
+            app:destination="@id/detailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailFragment"
+        android:name="com.example.harajtask.feature.detail.view.DetailFragment"
+        android:label="DetailFragment"
+        tools:layout="@layout/fragment_detail">
+        <argument
+            android:name="postData"
+            app:argType="com.example.harajtask.essential.data.Post" />
+    </fragment>
 </navigation>

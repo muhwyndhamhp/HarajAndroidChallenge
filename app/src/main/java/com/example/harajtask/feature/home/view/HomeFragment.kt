@@ -3,6 +3,7 @@ package com.example.harajtask.feature.home.view
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.viewModels
+import androidx.navigation.findNavController
 import com.example.harajtask.R
 import com.example.harajtask.databinding.FragmentHomeBinding
 import com.example.harajtask.essential.base.BaseFragment
@@ -46,8 +47,15 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>() {
     }
 
     private fun handlePostData(postData: List<Post>?) {
-        if (::adapter.isInitialized.not()) adapter = HomeAdapter(postData ?: listOf())
+        if (::adapter.isInitialized.not()) adapter = HomeAdapter(
+            itemList = postData ?: listOf(),
+            clickCallback = this::handleAdapterClick
+        )
         else adapter.updateList(postData ?: listOf())
         this.binding?.homeRecyclerView?.adapter = adapter
+    }
+
+    private fun handleAdapterClick(position: Int, post: Post) {
+        this.binding?.root?.findNavController()?.navigate(HomeFragmentDirections.actionHomeFragmentToDetailFragment(post))
     }
 }
