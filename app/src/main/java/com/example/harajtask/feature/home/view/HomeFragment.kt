@@ -2,7 +2,6 @@ package com.example.harajtask.feature.home.view
 
 import android.os.Bundle
 import android.view.View
-import android.widget.Toast
 import androidx.fragment.app.viewModels
 import com.example.harajtask.R
 import com.example.harajtask.databinding.FragmentHomeBinding
@@ -17,6 +16,8 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>() {
     override val viewModel: HomeViewModel by viewModels()
 
     override val bindingId = R.layout.fragment_home
+
+    private lateinit var adapter: HomeAdapter
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -35,8 +36,8 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>() {
     }
 
     private fun handlePostData(postData: List<Post>?) {
-        val context = this.context ?: return
-        val toast = Toast.makeText(context, postData.toString(), Toast.LENGTH_SHORT)
-        toast.show()
+        if (::adapter.isInitialized.not()) adapter = HomeAdapter(postData ?: listOf())
+        else adapter.updateList(postData ?: listOf())
+        this.binding?.homeRecyclerView?.adapter = adapter
     }
 }
