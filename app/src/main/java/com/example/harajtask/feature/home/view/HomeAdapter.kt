@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.harajtask.R
 import com.example.harajtask.databinding.ItemHomeListingBinding
@@ -39,11 +40,12 @@ class HomeAdapter(private var itemList: List<Post>) :
 
     @SuppressLint("NotifyDataSetChanged")
     fun updateList(list: List<Post>) {
-        if (list.isNullOrEmpty().not())
-        {
+        if (list.isNullOrEmpty().not()) {
+            val diffCallback = DiffCallback(this.itemList, list)
+            val diffResult = DiffUtil.calculateDiff(diffCallback)
             this.itemList = list
-            notifyDataSetChanged()
+            diffResult.dispatchUpdatesTo(this)
         }
-
+        
     }
 }
