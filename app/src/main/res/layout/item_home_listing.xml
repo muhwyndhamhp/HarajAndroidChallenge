@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-
         <import type="android.view.View" />
 
         <variable
@@ -13,10 +12,12 @@
     </data>
 
     <androidx.cardview.widget.CardView
+        android:clickable="true"
+        android:focusable="true"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="5dp"
-        app:cardBackgroundColor="#eeeeff"
+        app:cardBackgroundColor="@{post.commentCount > 0 ? 0 : 0xFFEEEEFF }"
         app:cardCornerRadius="10dp"
         app:cardElevation="0dp">
 
@@ -55,7 +56,7 @@
                 android:src="@drawable/ic_user"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:tint="#000000" />
+                app:tint="@color/black" />
 
             <TextView
                 android:id="@+id/item_user_text_view"
@@ -87,7 +88,7 @@
                 app:layout_constraintEnd_toEndOf="@id/guideline_055"
                 app:layout_constraintHorizontal_bias="0"
                 app:layout_constraintTop_toTopOf="@id/item_user_text_view"
-                app:tint="#000000" />
+                app:tint="@color/black" />
 
             <TextView
                 android:id="@+id/item_location_text_view"
@@ -114,11 +115,11 @@
                 android:layout_height="14dp"
                 android:layout_marginBottom="10dp"
                 android:contentDescription="@string/item_user_image_view_content_description"
-                android:src="@drawable/ic_share"
+                android:src="@drawable/ic_comment"
                 android:visibility="@{post.commentCount > 0 ? View.VISIBLE : View.INVISIBLE}"
                 app:layout_constraintBottom_toTopOf="@id/item_user_image_view"
                 app:layout_constraintEnd_toEndOf="@id/item_user_image_view"
-                app:tint="#000000" />
+                app:tint="@color/black" />
 
             <TextView
                 android:id="@+id/item_comment_text_view"
@@ -152,9 +153,9 @@
                 android:maxLines="2"
                 android:text="@{post.title}"
                 android:textAlignment="viewEnd"
-                android:textColor="#44bb55"
-                android:textStyle="bold"
+                android:textColor="@color/titleGreen"
                 android:textSize="18sp"
+                android:textStyle="bold"
                 app:autoSizeMaxTextSize="18sp"
                 app:autoSizeMinTextSize="6sp"
                 app:autoSizeTextType="uniform"
