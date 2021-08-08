@@ -1,4 +1,4 @@
-package com.example.harajtask
+package com.example.harajtask.feature
 
 import android.os.Bundle
 import com.example.harajtask.databinding.ActivityMainBinding
