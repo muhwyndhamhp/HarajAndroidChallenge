@@ -1,7 +1,6 @@
 package com.example.harajtask.essential.extension
 
 import android.app.Activity
-import java.io.IOException
 
 object IOExtension {
 
