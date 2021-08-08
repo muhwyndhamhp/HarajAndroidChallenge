@@ -2,10 +2,15 @@ package com.example.harajtask
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.example.harajtask.databinding.ActivityMainBinding
+import com.example.harajtask.essential.base.BaseActivity
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : BaseActivity() {
+    lateinit var binding: ActivityMainBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
     }
 }
