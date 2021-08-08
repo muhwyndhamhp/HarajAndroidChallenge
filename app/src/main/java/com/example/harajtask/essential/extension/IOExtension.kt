@@ -7,7 +7,8 @@ object IOExtension {
     fun Activity.getAssetJson(): String {
         return try {
             val inputStream = this.assets.open("data.json")
-            val buffer = byteArrayOf()
+            val size = inputStream.available()
+            val buffer = ByteArray(size)
             inputStream.read(buffer)
             inputStream.close()
             String(buffer, Charsets.UTF_8)
