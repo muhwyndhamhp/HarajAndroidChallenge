@@ -5,15 +5,21 @@
 
     <data>
 
+        <import type="android.view.View" />
+
+        <variable
+            name="post"
+            type="com.example.harajtask.essential.data.Post" />
     </data>
 
     <androidx.cardview.widget.CardView
-        android:layout_margin="5dp"
-        app:cardElevation="0dp"
-        app:cardCornerRadius="10dp"
-        app:cardBackgroundColor="#eeeeff"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        app:cardBackgroundColor="#eeeeff"
+        app:cardCornerRadius="10dp"
+        app:cardElevation="0dp">
+
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="120dp"
@@ -22,9 +28,9 @@
             <androidx.cardview.widget.CardView
                 android:id="@+id/item_image_card_view"
                 android:layout_width="0dp"
-                app:cardElevation="0dp"
                 android:layout_height="0dp"
                 app:cardCornerRadius="10dp"
+                app:cardElevation="0dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="@id/guideline_03"
                 app:layout_constraintStart_toStartOf="parent"
@@ -36,6 +42,7 @@
                     android:layout_height="match_parent"
                     android:contentDescription="@string/item_image_view_content_description"
                     android:scaleType="centerCrop"
+                    app:setNetworkImage="@{post.thumbURL}"
                     tools:src="@drawable/ic_launcher_background" />
             </androidx.cardview.widget.CardView>
 
@@ -52,39 +59,50 @@
 
             <TextView
                 android:id="@+id/item_user_text_view"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="10dp"
+                android:lines="1"
+                android:text="@{post.username}"
+                android:textAlignment="viewEnd"
+                app:autoSizeMaxTextSize="14sp"
+                app:autoSizeMinTextSize="6sp"
+                app:autoSizeTextType="uniform"
                 app:layout_constraintBottom_toBottomOf="@id/item_user_image_view"
                 app:layout_constraintEnd_toStartOf="@id/item_user_image_view"
+                app:layout_constraintHorizontal_bias="1"
+                app:layout_constraintStart_toStartOf="@id/guideline_055"
                 app:layout_constraintTop_toTopOf="@id/item_user_image_view"
                 tools:text="Abdul Rehman" />
 
             <ImageView
                 android:id="@+id/item_location_image_view"
-                android:layout_width="12dp"
+                android:layout_width="22dp"
                 android:layout_height="12dp"
                 android:contentDescription="@string/item_user_image_view_content_description"
+                android:paddingStart="5dp"
+                android:paddingEnd="5dp"
                 android:src="@drawable/ic_location"
                 app:layout_constraintBottom_toBottomOf="@id/item_user_text_view"
-                app:layout_constraintEnd_toStartOf="@id/item_user_text_view"
+                app:layout_constraintEnd_toEndOf="@id/guideline_055"
                 app:layout_constraintHorizontal_bias="0"
-                app:layout_constraintStart_toEndOf="@id/item_location_text_view"
                 app:layout_constraintTop_toTopOf="@id/item_user_text_view"
                 app:tint="#000000" />
 
             <TextView
                 android:id="@+id/item_location_text_view"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
                 android:gravity="center"
+                android:lines="1"
+                android:text="@{post.city}"
                 android:textAlignment="gravity"
                 app:autoSizeMaxTextSize="12sp"
                 app:autoSizeMinTextSize="6sp"
                 app:autoSizeTextType="uniform"
                 app:layout_constraintBottom_toBottomOf="@id/item_location_image_view"
-                app:layout_constraintEnd_toEndOf="@id/item_location_image_view"
+                app:layout_constraintEnd_toStartOf="@id/item_location_image_view"
                 app:layout_constraintHorizontal_bias="0"
                 app:layout_constraintStart_toStartOf="@id/guideline_03"
                 app:layout_constraintTop_toTopOf="@id/item_location_image_view"
@@ -97,6 +115,7 @@
                 android:layout_marginBottom="10dp"
                 android:contentDescription="@string/item_user_image_view_content_description"
                 android:src="@drawable/ic_share"
+                android:visibility="@{post.commentCount > 0 ? View.VISIBLE : View.INVISIBLE}"
                 app:layout_constraintBottom_toTopOf="@id/item_user_image_view"
                 app:layout_constraintEnd_toEndOf="@id/item_user_image_view"
                 app:tint="#000000" />
@@ -106,6 +125,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="10dp"
+                android:text="@{`(` + post.commentCount + `)`}"
+                android:visibility="@{post.commentCount > 0 ? View.VISIBLE : View.INVISIBLE}"
                 app:layout_constraintBottom_toBottomOf="@id/item_comment_image_view"
                 app:layout_constraintEnd_toStartOf="@id/item_comment_image_view"
                 app:layout_constraintTop_toTopOf="@id/item_comment_image_view"
@@ -119,18 +140,24 @@
                 android:textSize="12sp"
                 app:layout_constraintBottom_toTopOf="@id/item_comment_image_view"
                 app:layout_constraintEnd_toEndOf="@id/item_comment_image_view"
+                app:setElapsedTime="@{post.date}"
                 tools:text="Since 3 hours" />
 
             <TextView
                 android:id="@+id/item_title_text_view"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
                 android:ellipsize="end"
-                android:lines="1"
+                android:maxLines="2"
+                android:text="@{post.title}"
+                android:textAlignment="viewEnd"
                 android:textColor="#44bb55"
-                android:textSize="18sp"
                 android:textStyle="bold"
+                android:textSize="18sp"
+                app:autoSizeMaxTextSize="18sp"
+                app:autoSizeMinTextSize="6sp"
+                app:autoSizeTextType="uniform"
                 app:layout_constraintBottom_toTopOf="@id/item_time_text_view"
                 app:layout_constraintEnd_toEndOf="@id/item_time_text_view"
                 app:layout_constraintHorizontal_bias="1"
@@ -144,6 +171,13 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 app:layout_constraintGuide_percent="0.35" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline_055"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.55" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
