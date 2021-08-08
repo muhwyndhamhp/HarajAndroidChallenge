@@ -1,4 +1,4 @@
-package io.muhwyndhamhp.currencymaster.essential.util
+package com.example.harajtask.essential.util
 
 import javax.inject.Inject
 

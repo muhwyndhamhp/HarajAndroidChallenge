@@ -18,6 +18,6 @@ class DiffCallback(private val oldList: List<Post>, private val newList: List<Po
     }
 
     override fun areContentsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean {
-        return oldList[oldItemPosition].title == newList[newItemPosition].title
+        return oldList[oldItemPosition] == newList[newItemPosition]
     }
 }

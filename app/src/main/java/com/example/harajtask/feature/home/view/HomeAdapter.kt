@@ -1,6 +1,5 @@
 package com.example.harajtask.feature.home.view
 
-import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
@@ -37,8 +36,6 @@ class HomeAdapter(private var itemList: List<Post>) :
 
     override fun getItemCount() = itemList.size
 
-
-    @SuppressLint("NotifyDataSetChanged")
     fun updateList(list: List<Post>) {
         if (list.isNullOrEmpty().not()) {
             val diffCallback = DiffCallback(this.itemList, list)
@@ -46,6 +43,6 @@ class HomeAdapter(private var itemList: List<Post>) :
             this.itemList = list
             diffResult.dispatchUpdatesTo(this)
         }
-        
+
     }
 }

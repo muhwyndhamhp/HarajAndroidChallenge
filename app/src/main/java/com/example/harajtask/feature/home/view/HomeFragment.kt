@@ -20,10 +20,11 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>() {
 
     private lateinit var adapter: HomeAdapter
 
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        this.setViewModelObservers()
+        this.setViewModelObserver()
         this.getInitialData()
         this.setupSearch()
     }
@@ -40,7 +41,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>() {
         this.viewModel.getData(activity)
     }
 
-    private fun setViewModelObservers() {
+    private fun setViewModelObserver() {
         this.viewModel.postData.observe(this.viewLifecycleOwner, this::handlePostData)
     }
 

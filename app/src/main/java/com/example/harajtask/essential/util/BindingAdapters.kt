@@ -6,7 +6,6 @@ import android.widget.TextView
 import androidx.databinding.BindingAdapter
 import com.bumptech.glide.Glide
 import com.example.harajtask.essential.extension.LongExtension.toCountDown
-import io.muhwyndhamhp.currencymaster.essential.util.StaticHelper
 
 object BindingAdapters {
     @JvmStatic
