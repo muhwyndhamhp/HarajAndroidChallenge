@@ -12,6 +12,7 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
+import java.util.*
 import javax.inject.Inject
 
 @HiltViewModel
@@ -22,7 +23,11 @@ class HomeViewModel @Inject constructor(private val repository: AppRepository) :
 
     fun getData(activity: Activity?, filter: String = "") = viewModelScope.launch(Dispatchers.IO) {
         val gson = Gson()
-        this@HomeViewModel.repository.getData(activity, filter, gson).collect { taskResult ->
+        this@HomeViewModel.repository.getData(
+            activity,
+            filter.lowercase(Locale.getDefault()),
+            gson
+        ).collect { taskResult ->
             if (taskResult.isSuccess) this@HomeViewModel._postData.postValue(taskResult.data)
             else this@HomeViewModel.mutableErrorMessage.postValue(taskResult.error)
         }
