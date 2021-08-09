@@ -1,5 +1,6 @@
 package com.example.harajtask.feature.detail.view
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.viewModels
@@ -22,6 +23,19 @@ class DetailFragment : BaseFragment<FragmentDetailBinding, DetailViewModel>() {
 
         this.setViewModelObserver()
         this.viewModel.setPostData(args.postData)
+
+    }
+
+    private fun setShareAction(title: String?) {
+        this.binding?.detailShareButton?.setOnClickListener {
+            val intent = Intent().apply {
+                action = Intent.ACTION_SEND
+                putExtra(Intent.EXTRA_TEXT, title)
+                type = "text/plain"
+            }
+            val shareIntent = Intent.createChooser(intent, null)
+            startActivity(shareIntent)
+        }
     }
 
     private fun setViewModelObserver() {
@@ -30,5 +44,6 @@ class DetailFragment : BaseFragment<FragmentDetailBinding, DetailViewModel>() {
 
     private fun handlePostData(post: Post) {
         this.binding?.post = post
+        this.setShareAction(post.title)
     }
 }
