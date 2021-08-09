@@ -20,6 +20,20 @@ Second, a screen that displays the information of a particular Post upon click e
 
 The share button should open up Android's native share sheet to share the title of the Post with other apps.
 
+## My Submission 
+
+This is my submission for ths task:
+
+https://user-images.githubusercontent.com/34619560/128657134-d737b4ad-f099-4190-9872-78c2abf60f25.mov
+
+As required, I made two screen with one for listing and the other for details. Some feature you might find interesting:
+- Searchable result
+- Clickable common number pattern (such as phone number, email, etc)
+- Share function
+- Testable Code (which includes Unit Test that you cna try yourself)
+
+You can also try this directly by downloading the APK from the release page. 
+
 ## Evaluation
 
 Your work will be evaluated upon the following:
