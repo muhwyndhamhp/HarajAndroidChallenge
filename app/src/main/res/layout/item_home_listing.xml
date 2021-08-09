@@ -17,7 +17,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="5dp"
-        app:cardBackgroundColor="@{post.commentCount > 0 ? 0 : 0xFFEEEEFF }"
+        app:cardBackgroundColor="@{post.commentCount > 0 ? 0 : 0xFFE7E9EE }"
         app:cardCornerRadius="10dp"
         app:cardElevation="0dp">
 
@@ -56,7 +56,7 @@
                 android:src="@drawable/ic_user"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:tint="@color/black" />
+                app:tint="@color/grey" />
 
             <TextView
                 android:id="@+id/item_user_text_view"
@@ -88,7 +88,7 @@
                 app:layout_constraintEnd_toEndOf="@id/guideline_055"
                 app:layout_constraintHorizontal_bias="0"
                 app:layout_constraintTop_toTopOf="@id/item_user_text_view"
-                app:tint="@color/black" />
+                app:tint="@color/grey" />
 
             <TextView
                 android:id="@+id/item_location_text_view"
@@ -119,7 +119,7 @@
                 android:visibility="@{post.commentCount > 0 ? View.VISIBLE : View.INVISIBLE}"
                 app:layout_constraintBottom_toTopOf="@id/item_user_image_view"
                 app:layout_constraintEnd_toEndOf="@id/item_user_image_view"
-                app:tint="@color/black" />
+                app:tint="@color/grey" />
 
             <TextView
                 android:id="@+id/item_comment_text_view"

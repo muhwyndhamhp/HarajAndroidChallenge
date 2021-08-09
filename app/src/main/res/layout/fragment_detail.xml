@@ -14,6 +14,7 @@
 
     <ScrollView
         android:layout_width="match_parent"
+        android:background="@color/white"
         android:layout_height="match_parent">
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -55,7 +56,7 @@
                 android:src="@drawable/ic_user"
                 app:layout_constraintStart_toStartOf="@id/item_time_text_view"
                 app:layout_constraintTop_toBottomOf="@id/item_time_text_view"
-                app:tint="@color/black" />
+                app:tint="@color/grey" />
 
             <TextView
                 android:id="@+id/item_user_text_view"
@@ -88,7 +89,7 @@
                 app:layout_constraintHorizontal_bias="0"
                 app:layout_constraintStart_toStartOf="@id/guideline_055"
                 app:layout_constraintTop_toTopOf="@id/item_user_text_view"
-                app:tint="@color/black" />
+                app:tint="@color/grey" />
 
             <TextView
                 android:id="@+id/item_location_text_view"
