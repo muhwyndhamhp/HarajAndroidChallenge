@@ -30,6 +30,7 @@ As required, I made two screen with one for listing and the other for details. S
 - Searchable result
 - Clickable common number pattern (such as phone number, email, etc)
 - Share function
+- Using MVVM with common tools such as Coroutines, Flow and LiveData
 - Testable Code (which includes Unit Test that you cna try yourself)
 
 You can also try this directly by downloading the APK from the release page. 
